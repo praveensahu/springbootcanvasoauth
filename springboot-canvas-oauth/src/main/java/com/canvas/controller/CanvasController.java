@@ -24,13 +24,13 @@ public class CanvasController {
 
 	@GetMapping("/account")
 	@ResponseBody
-	private ResponseEntity<List<AccountDTO>> syncAccount() {
+	private ResponseEntity<List<AccountDTO>> syncAccount() throws Exception {
 		return ResponseEntity.ok(accountService.syncAccountDetails());
 	}
 	
 	@GetMapping("/courses")
 	@ResponseBody
-	private ResponseEntity<List<CoursesDTO>> syncCourse() {
+	private ResponseEntity<List<CoursesDTO>> syncCourse() throws Exception{
 		return ResponseEntity.ok(courseService.syncCourseDetails());
 	}
 }

@@ -19,21 +19,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AccountService {
 	@Autowired
 	private WebClientComponent webclient;
-	
 	@Autowired
 	private AccountRepository accountRepository;
-	
-	public List<AccountDTO> syncAccountDetails() {
+
+	public List<AccountDTO> syncAccountDetails() throws Exception {
 		List<AccountDTO> accountList = new ArrayList<AccountDTO>();
-		try {
-			accountList = new ObjectMapper().readValue(webclient.getApiResponse("/accounts"),new TypeReference<List<AccountDTO>>() {});
-			List<Account> listOfEntity =  accountList.stream().map(e-> new ModelMapper().map(e, Account.class)).collect(Collectors.toList());
-			accountRepository.saveAll(listOfEntity);
-		} catch (Exception ex) {
-			System.out.println(ex);
-		}
+		accountList = new ObjectMapper().readValue(webclient.getApiResponse("/accounts"),new TypeReference<List<AccountDTO>>() {});
+		List<Account> listOfEntity = accountList.stream().map(e -> new ModelMapper().map(e, Account.class)).collect(Collectors.toList());
+		accountRepository.saveAll(listOfEntity);
 		return accountList;
 	}
 
-	
 }
