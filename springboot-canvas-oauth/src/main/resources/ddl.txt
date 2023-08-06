@@ -1,0 +1,36 @@
+CREATE TABLE accounts( 
+   id INT NOT NULL, 
+   name VARCHAR(50) , 
+   workflow_state VARCHAR(20), 
+   parent_account_id VARCHAR(20),
+   root_account_id VARCHAR(20),
+   uuid uuid,
+   default_storage_quota_mb INT ,
+   default_user_storage_quota_mb INT ,
+   default_group_storage_quota_mb INT ,
+   default_time_zone VARCHAR(20),
+   PRIMARY KEY (ID)
+);
+
+CREATE TABLE courses
+  (
+     id                             INT NOT NULL,
+     NAME                           VARCHAR(50),
+     account_id                     INT NOT NULL,
+     uuid                           UUID,
+     start_at                       VARCHAR(20),
+     grading_standard_id            VARCHAR(20),
+     created_at                     VARCHAR(20),
+     course_code                    VARCHAR(20),
+     default_view                   VARCHAR(20),
+     root_account_id                INT,
+     enrollment_term_id             INT,
+     license                        VARCHAR(20),
+     end_at                         VARCHAR(20),
+     public_syllabus                BOOLEAN,
+     public_syllabus_to_auth        BOOLEAN,
+     storage_quota_mb               INT,
+     is_public_to_auth_users        BOOLEAN,
+     apply_assignment_group_weights BOOLEAN,
+     PRIMARY KEY (id)
+  ) ;
