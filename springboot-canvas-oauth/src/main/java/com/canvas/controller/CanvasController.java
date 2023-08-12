@@ -33,4 +33,5 @@ public class CanvasController {
 	private ResponseEntity<List<CoursesDTO>> syncCourse() throws Exception{
 		return ResponseEntity.ok(courseService.syncCourseDetails());
 	}
+	
 }
